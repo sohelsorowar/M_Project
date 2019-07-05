@@ -1,0 +1,36 @@
+{% extends "meeting_app/base.html" %}
+{% block body_block %}
+
+<div class="jumbtron">
+  <div class="container">
+      <h1>Create Meeting</h1>
+
+     <div class="">
+      <label for="meeting_name">Meeting name:</label>
+      <input type="text" name="meeting_name" placeholder="Type meeting name">
+     </div>
+
+     <div class="">
+      <label for="meeting_sub">Meeting Subject:</label>
+      <input type="text" name="meeting_sub" placeholder="Type meeting sub..">
+     </div>
+
+     <div class="">
+      <label for="meeting_mail_text">Write text for meeting :</label>
+      <textarea class="form-control" rows="7" id="comment"></textarea>
+     </div>
+
+     <div class="">
+      <p>Invite members:</p>
+      <input type="radio" name="meeting_invite" value=""> Sellect ALL<br>
+      <input type="radio" name="meeting_invite" value=""> Select Manual<br>
+     </div>
+
+     <div class="">
+
+        <input type="submit" value="Send">
+     </div>
+
+  </div>
+</div>
+{% endblock %}

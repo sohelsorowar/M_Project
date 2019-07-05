@@ -11,6 +11,8 @@ from django.urls import reverse
 def index(request):
     return render(request,'meeting_app/index.html')
 
+def create_meeting(request):
+    return render(request,'meeting_app/create_meeting.html')
 
 @login_required
 def special(request):

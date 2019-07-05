@@ -12,6 +12,7 @@
           <li><a class=" navbar-brand " href="{% url 'index' %}">DJANGO</a></li>
           <li><a class=" navbar-link " href="{% url 'admin:index' %}">Admin</a></li>
           <li><a class=" navbar-link " href="{% url 'meeting_app:register' %}">Register</a></li>
+          <li><a class=" navbar-link " href="{% url 'meeting_app:create_meeting' %}">Create_Meating</a></li>
 
 
           {% if user.is_authenticated %}
