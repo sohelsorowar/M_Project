@@ -1,0 +1,28 @@
+
+{% extends "meeting_app/base.html" %}
+{% block body_block %}
+
+<div class="container">
+<h1>
+ {% if not form.instance.pk %}
+ Create Create_Meeting
+ {% else %}
+ Update Create_Meeting
+ {% endif %}
+</h1>
+
+
+  <form  method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" class="btn btn-primary" value="Send">
+    <input type="submit" class="btn btn-primary" value="Save">
+
+
+
+  </form>
+
+</div>
+
+{% endblock %}

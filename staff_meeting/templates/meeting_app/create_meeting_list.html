@@ -1,0 +1,14 @@
+{% extends 'meeting_app/base.html' %}
+{% block body_block %}
+
+  <div class="container">
+<h1>List of all Meetings.</h1>
+  <ol>
+    {% for create_meeting in create_meetings %}
+    <h5><li><a href="{{create_meeting.meeting_id}}">ID: {{create_meeting.meeting_id}}--Meeting Name: {{create_meeting.meeting_name}}</a></li></h5>
+    {% endfor %}
+  </ol>
+
+
+</div>
+{% endblock %}

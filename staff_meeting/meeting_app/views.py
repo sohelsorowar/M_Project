@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from meeting_app.forms import UserForm,UserProfileInfoForm
-#from django.views.generic import View,TemplateView
+from django.views.generic import View,TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect, HttpResponse
-#from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from . import models
 
 # Create your views here.
 def index(request):
@@ -13,6 +14,9 @@ def index(request):
 
 def create_meeting(request):
     return render(request,'meeting_app/create_meeting.html')
+
+def meeting_detail(request):
+    return render(request,'meeting_app/meeting_detail.html')
 
 @login_required
 def special(request):
@@ -75,7 +79,7 @@ def user_login(request):
             if user.is_active:
                 login(request,user)
                 return HttpResponseRedirect(reverse('index'))
-
+                #return render(request,'meeting_app/create_meeting.html')
             else:
                 return HttpResponse("Account not Active!!!")
         else:
@@ -84,3 +88,32 @@ def user_login(request):
             return HttpResponse("Invalied login!!")
     else:
         return render(request,'meeting_app/login.html',{})
+
+
+class Create_MeetingListView(ListView):
+    context_object_name = 'create_meetings'
+    model = models.Create_Meeting
+
+class Create_MeetingDetailView(DetailView):
+    context_object_name = 'meeting_detail'
+    model = models.Create_Meeting
+    template_name = 'meeting_app/meeting_detail.html'
+
+class Create_MeetingCreateView(CreateView):
+    fields=('meeting_id','meeting_name','meeting_sub','meeting_text')
+    model = models.Create_Meeting
+
+class Create_MeetingUpdateView(UpdateView):
+    fields=('meeting_id','meeting_name','meeting_sub','meeting_text')
+    model = models.Create_Meeting
+
+
+class Create_MeatingDeleteView(DeleteView):
+    model = models.Create_Meeting
+    success_url = reverse_lazy("meeting_app:list")
+
+
+#lass Create_MeetingListView(DetailView):
+#    context_object_name='meeting_detail'
+#    model = models.Create_Meeting
+#    template_name = 'meeting_app/meeting_detail.html'
