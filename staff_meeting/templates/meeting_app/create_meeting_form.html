@@ -2,7 +2,9 @@
 {% extends "meeting_app/base.html" %}
 {% block body_block %}
 
-<div class="container">
+<div class="mask rgba-gradient align-items-center" style=" background-color:#DCDCDC;">
+<div class="container" >
+<div class="jumbtron">
 <h1>
  {% if not form.instance.pk %}
  Create Create_Meeting
@@ -11,18 +13,30 @@
  {% endif %}
 </h1>
 
-
-  <form  method="post">
+  <form   method="post">
     {% csrf_token %}
     {{ form.as_p }}
 
-    <input type="submit" class="btn btn-primary" value="Send">
-    <input type="submit" class="btn btn-primary" value="Save">
-
+    <!-- <input type="submit" class="btn btn-primary"  value="Send"> -->
+    <input type="submit" class="btn btn-primary"  value="Save">
 
 
   </form>
 
+    <form class="" action="{% url 'index' %}" method="post">
+      {% csrf_token %}
+
+      <textarea name="subject" placeholder="sub"></textarea>
+      <textarea name="message" placeholder="message"></textarea>
+
+      <input type="submit" class="btn btn-primary" name="" value="send mail">
+
+    </form>
+
+
+
+</div>
+</div>
 </div>
 
 {% endblock %}

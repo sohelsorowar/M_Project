@@ -1,11 +1,16 @@
 {% extends "meeting_app/base.html" %}
 {% block body_block %}
 
+<div class="mask rgba-gradient align-items-center" style=" background-color:#DCDCDC;">
+<div class="container" >
+<div class="jumbtron">
 <h1>Delete {{create_meetings.meeting_name}}?</h1>
 <form  method="post">
   {% csrf_token %}
   <input type="submit" class="btn btn-danger" value="Delete">
   <a href="{% url 'meeting_app:delete'  pk=meeting_detail.pk  %}">Cancel</a>
 </form>
-
+</div>
+</div>
+</div>
 {% endblock %}

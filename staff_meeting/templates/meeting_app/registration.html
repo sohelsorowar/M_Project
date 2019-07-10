@@ -2,7 +2,10 @@
 {% load staticfiles %}
 {% block body_block %}
 
-<div class="jumbtron">
+<div class="mask rgba-gradient align-items-center" style=" background-color:#DCDCDC;">
+    <div class="container" >
+        <div class="jumbtron">
+
   {% if registered %}
   <h1>Thankyou for registraing!!</h1>
   {% else %}
@@ -18,5 +21,6 @@
   </form>
  {% endif  %}
 </div>
-
+</div>
+</div>
 {% endblock %}

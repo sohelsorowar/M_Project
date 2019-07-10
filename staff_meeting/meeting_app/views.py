@@ -7,12 +7,25 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from . import models
+from django.core.mail import send_mail
+from django.conf import settings
+
+
+
 
 # Create your views here.
 def index(request):
+    if request.method=='POST':
+        message = request.POST['message']
+        subject = request.POST['subject']
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = ['sohelsorowar@gmail.com',]
+        send_mail( subject, message, email_from, recipient_list,fail_silently=False)
     return render(request,'meeting_app/index.html')
 
 def create_meeting(request):
+
+
     return render(request,'meeting_app/create_meeting.html')
 
 def meeting_detail(request):

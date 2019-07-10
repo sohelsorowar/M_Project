@@ -1,7 +1,9 @@
 {% extends 'meeting_app/base.html' %}
 {% block body_block %}
 
-  <div class="container">
+<div class="mask rgba-gradient align-items-center" style=" background-color:#DCDCDC;">
+<div class="container" >
+<div class="jumbtron">
 <h1>List of all Meetings.</h1>
   <ol>
     {% for create_meeting in create_meetings %}
@@ -10,5 +12,7 @@
   </ol>
 
 
+</div>
+</div>
 </div>
 {% endblock %}

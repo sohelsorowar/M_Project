@@ -131,3 +131,14 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 LOGIN_URL = '/meeting_app/user_login'
+
+
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.ru.ac.bd'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sohelsorowar@ru.ac.bd'
+EMAIL_HOST_PASSWORD = 'SohelSorowar1993'
+EMAIL_USE_TLS= True
+EMAIL_USE_SSL= False

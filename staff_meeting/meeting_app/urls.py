@@ -11,6 +11,7 @@ urlpatterns=[
         url(r'^delete/(?P<pk>\d+)/$',views.Create_MeetingDetailView.as_view(),name='delete'),
        url(r'^(?P<pk>\d+)/$',views.Create_MeetingDetailView.as_view(),name='meeting_detail'),
        url(r'^meeting_detail/$',views.meeting_detail,name='meeting_detail'),
+       
 
       # url(r'^$',views.Create_MeetingListView.as_view,name='list')
  ]

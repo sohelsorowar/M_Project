@@ -5,30 +5,46 @@
       <title></title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
-  <body>
-    <div class="container">
-    <nav class='navbar navbar-default navbar-static-top'>
+  <body   >
+
+
+
+
+  <nav class='navbar navbar-inverse navbar-static-top'>
+
       <div class="container">
         <ul class="nav navbar-nav">
-          <li><a class=" navbar-brand " href="{% url 'index' %}">DJANGO</a></li>
-          <li><a class=" navbar-link " href="{% url 'admin:index' %}">Admin</a></li>
-          <li><a class=" navbar-link " href="{% url 'meeting_app:register' %}">Register</a></li>
-          <li><a class=" navbar-link " href="{% url 'meeting_app:create_meeting' %}">Create_Meating</a></li>
-          <!-- <li><a class=" navbar-link " href="{% url 'meeting_app:meeting_detail' %}">Meeting_Detail</a></li> -->
-          <li><a class=" navbar-link " href="{% url 'meeting_app:list' %}">Meeting_List</a></li>
+            <!-- <li><a class=" navbar-link " href="{% url 'meeting_app:meeting_detail' %}">Meeting_Detail</a></li> -->
 
+        <li><a class=" navbar-brand " >RU_Meeting</a></li>
           {% if user.is_authenticated %}
-            <li><a class='navbar-link' href="{% url 'logout' %}">Logout</a></li>
+          <li><a class=" navbar-link " href="{% url 'index' %}">Home</a></li>
+          <li><a class=" navbar-link " href="{% url 'admin:index' %}">Admin</a></li>
+
+          <li><a class=" navbar-link " href="{% url 'meeting_app:create_meeting' %}">Create_Meating</a></li>
+          <li><a class=" navbar-link " href="{% url 'meeting_app:list' %}">Meeting_List</a></li>
+          <li><a class='navbar-link' href="{% url 'logout' %}">Logout</a></li>
+
+
+
+
           {% else %}
             <li><a class='navbar-link' href="{% url 'meeting_app:user_login' %}">Login</a></li>
+            <li><a class=" navbar-link " href="{% url 'meeting_app:register' %}">Register</a></li>
           {% endif %}
         </ul>
 
+                <ul class="nav navbar-nav navbar-right">
+                         <li><input class="form-control mr-sm-2" type="text"  placeholder="Search"> </li>
+                         <li> <button class="btn btn-#DCDCDC" type="submit" >Search</button> </li>
+
+                </ul>
       </div>
 
     </nav>
 
 
+    </div>
     </div>
     {% block body_block %}
     {% endblock %}
