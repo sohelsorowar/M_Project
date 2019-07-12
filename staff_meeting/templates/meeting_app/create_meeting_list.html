@@ -1,15 +1,41 @@
 {% extends 'meeting_app/base.html' %}
 {% block body_block %}
+<style>
+  table, th, td {
+    border: 4px solid white;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 15px;
+  }
+</style>
+
+
 
 <div class="mask rgba-gradient align-items-center" style=" background-color:#DCDCDC;">
 <div class="container" >
 <div class="jumbtron">
 <h1>List of all Meetings.</h1>
-  <ol>
-    {% for create_meeting in create_meetings %}
-    <h5><li><a href="{{create_meeting.meeting_id}}">ID: {{create_meeting.meeting_id}}--Meeting Name: {{create_meeting.meeting_name}}</a></li></h5>
-    {% endfor %}
-  </ol>
+
+  <table style="width:100%">
+  <tr>
+    <th> <h3>Meeting ID</h3>  </th>
+    <th><h3>Meeting Type</h3>  </th>
+    <th><h3>Meeting SubHeading</h3>  </th>
+    <th><h3>Meeting Agenda</h3>  </th>
+    <th><h3>Date</h3>  </th>
+  </tr>
+  {% for create_meeting in create_meetings %}
+  <tr>
+    <th> {{create_meeting.meeting_id }}</th>
+    <th> {{ create_meeting.meeting_name }}</th>
+    <th> <a href="{{create_meeting.meeting_id}}">{{ create_meeting.meeting_sub }}</a></th>
+    <th> {{ create_meeting.meeting_text }}</th>
+    <th> {{ create_meeting.date }}</th>
+  </tr>
+  {% endfor %}
+  </table>
+
 
 
 </div>

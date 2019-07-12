@@ -24,8 +24,6 @@ def index(request):
     return render(request,'meeting_app/index.html')
 
 def create_meeting(request):
-
-
     return render(request,'meeting_app/create_meeting.html')
 
 def meeting_detail(request):
@@ -113,17 +111,22 @@ class Create_MeetingDetailView(DetailView):
     template_name = 'meeting_app/meeting_detail.html'
 
 class Create_MeetingCreateView(CreateView):
-    fields=('meeting_id','meeting_name','meeting_sub','meeting_text')
+    fields=('meeting_name','meeting_sub','meeting_text','date')
     model = models.Create_Meeting
 
 class Create_MeetingUpdateView(UpdateView):
-    fields=('meeting_id','meeting_name','meeting_sub','meeting_text')
+    fields=('meeting_name','meeting_sub','meeting_text','date')
     model = models.Create_Meeting
 
 
 class Create_MeatingDeleteView(DeleteView):
     model = models.Create_Meeting
     success_url = reverse_lazy("meeting_app:list")
+
+
+class Committee_MemberListView(ListView):
+    context_object_name = 'committee_members'
+    model = models.Committee_Member
 
 
 #lass Create_MeetingListView(DetailView):

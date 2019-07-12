@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from datetime import datetime
 
 # Create your models here.
 
@@ -16,13 +17,22 @@ class UserProfileInfo(models.Model):
 def __str__(self):
     return self.user.username
 
-
+CHOICES = (
+    ('Planning Meeting','Planning Meeting',),
+    ('Exam Committee Meeting', 'Exam Committee Meeting'),
+    ('Event Meeting','Event Meeting'),
+    ('AC Meeting','AC Meeting'),
+    ('General Meeting','General Meeting'),
+    ('Other','Other')
+)
 
 class Create_Meeting(models.Model):
-    meeting_id = models.IntegerField()
-    meeting_name= models.CharField(max_length=256)
+    #meeting_id = models.IntegerField()
+    meeting_id = models.AutoField(primary_key=True)
+    meeting_name= models.CharField(max_length=256, choices=CHOICES, default='General Meeting')
     meeting_sub= models.CharField(max_length=256)
-    meeting_text= models.TextField(max_length=1024)
+    meeting_text= models.TextField(max_length=500)
+    date = models.DateField(default=datetime.now)
 
     def __str__(self):
         return self.meeting_name
@@ -31,6 +41,18 @@ class Create_Meeting(models.Model):
         return reverse("meeting_app:meeting_detail", kwargs={'pk': self.pk})
 
         #return reverse("meeting_app:meeting_detail")
+
+
+class Committee_Member(models.Model):
+    first_name = models.CharField(max_length=50,blank=False)
+    last_name = models.CharField(max_length=50,blank=False)
+    designation = models.CharField(max_length=50,blank=False)
+    member_type = models.ForeignKey(Create_Meeting,related_name='committee_members')
+    email = models.EmailField(max_length=70,blank=False)
+
+    def __str__(self):
+        return self.first_name
+
 
 
 # Create your models here.

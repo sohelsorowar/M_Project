@@ -20,4 +20,4 @@ class UserProfileInfoForm(forms.ModelForm):
 class Create_MeetingForm(forms.ModelForm):
     class Meta():
         model = Create_Meeting
-        fields =('meeting_name','meeting_sub','meeting_text')
+        fields =('meeting_name','meeting_sub','meeting_text','date')
