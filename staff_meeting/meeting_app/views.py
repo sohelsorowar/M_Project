@@ -21,6 +21,7 @@ def index(request):
         email_from = settings.EMAIL_HOST_USER
         recipient_list = ['sohelsorowar@gmail.com',]
         send_mail( subject, message, email_from, recipient_list,fail_silently=False)
+        return HttpResponse("Mail send successfully")
     return render(request,'meeting_app/index.html')
 
 def create_meeting(request):
@@ -28,6 +29,8 @@ def create_meeting(request):
 
 def meeting_detail(request):
     return render(request,'meeting_app/meeting_detail.html')
+
+
 
 @login_required
 def special(request):
@@ -120,6 +123,7 @@ class Create_MeetingUpdateView(UpdateView):
 
 
 class Create_MeatingDeleteView(DeleteView):
+
     model = models.Create_Meeting
     success_url = reverse_lazy("meeting_app:list")
 

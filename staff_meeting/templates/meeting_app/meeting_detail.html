@@ -4,15 +4,15 @@
 <div class="mask rgba-gradient align-items-center" style=" background-color:#DCDCDC;">
 <div class="jumbtron">
   <div class="container">
-  <h1>Meeting detail page</h1>
-    <p>ID: {{meeting_detail.meeting_id}}</p>
-    <p>Name: {{meeting_detail.meeting_name}}</p>
-    <p>Subject: {{meeting_detail.meeting_sub}}</p>
-    <p>Detail:{{meeting_detail.meeting_text}}</p>
+  <h1>Meeting Resulation/details page</h1>
+    <p>ID : {{meeting_detail.meeting_id}}</p>
+    <p>Type : {{meeting_detail.meeting_name}}</p>
+    <p>SubHeadiing : {{meeting_detail.meeting_sub}}</p>
+    <p>Agenda : {{meeting_detail.meeting_text}}</p>
 
 
     <p><a class='btn btn-warning' href="{% url 'meeting_app:update' pk=meeting_detail.pk %}">Update</a></p>
-
+  
 
 
       </div>

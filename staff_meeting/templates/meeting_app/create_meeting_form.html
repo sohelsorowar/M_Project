@@ -1,48 +1,65 @@
 
 {% extends "meeting_app/base.html" %}
 {% block body_block %}
+{% load crispy_forms_tags %}
 
-<div class="mask rgba-gradient align-items-center" style=" background-color:#DCDCDC;">
-<div class="container" >
-<div class="jumbtron">
-<h1>
- {% if not form.instance.pk %}
- Create Create_Meeting
- {% else %}
- Update Create_Meeting
- {% endif %}
-</h1>
+<div class="mask rgba-gradient align-items-center" style=" background-color:white;">
+    <div class="container" >
+        <div class="jumbtron">
+          <h1>
+           {% if not form.instance.pk %}
+            CREATE MEETING
+           {% else %}
+           Update Create_Meeting
+           {% endif %}
+          </h1>
 
-  <form   method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-      <input type="submit" class="btn btn-primary"  value="Save">
-    <form>
+          <form method="post" novalidate>
 
-    <button id="add-another">add Agenda</button>
+                    {% csrf_token %}
+                    <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                    {{ form.meeting_name|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                    {{ form.date|as_crispy_field }}
+                    </div>
+                   </div>
 
-     </form>
 
-    <!-- <input type="submit" class="btn btn-primary"  value="Send"> -->
+                     {{ form.meeting_sub|as_crispy_field }}
 
-
-
-  </form>
-
-    <form class="" action="{% url 'index' %}" method="post">
-      {% csrf_token %}
-
-      <textarea name="subject" placeholder="sub"></textarea>
-      <textarea name="message" placeholder="message"></textarea>
-
-      <input type="submit" class="btn btn-primary" name="" value="send mail">
-
-    </form>
+                     {{ form.meeting_text|as_crispy_field }}
 
 
 
-</div>
-</div>
+                    <!-- {{ form|crispy }} -->
+
+                    <input type="submit" class="btn btn-success"  value="Save">
+
+          </form>
+
+
+            <form>
+                <button id="add-another">add Agenda</button>
+            </form>
+
+            <!-- <input type="submit" class="btn btn-primary"  value="Send"> -->
+
+          <form class="" action="{% url 'index' %}" method="post">
+            {% csrf_token %}
+
+            <textarea name="subject" placeholder="sub"></textarea>
+            <textarea name="message" placeholder="message"></textarea>
+
+            <input type="submit" class="btn btn-primary" name="" value="send mail">
+
+          </form>
+
+
+
+        </div>
+    </div>
 </div>
 
 {% endblock %}

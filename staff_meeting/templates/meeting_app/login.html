@@ -1,18 +1,24 @@
 {% extends 'meeting_app/base.html' %}
+{% load crispy_forms_tags %}
 {% block body_block %}
 
-<div class="mask rgba-gradient align-items-center" style=" background-color:#DCDCDC;">
+<div class="mask rgba-gradient align-items-center" style=" background-color:white;">
     <div class="container" >
 
 <div class="jumbtron">
-  <h1>Please log in</h1>
+  <h1>Log In to Continue</h1>
   <form action="{% url 'meeting_app:user_login' %}" method="post">
     {% csrf_token %}
-    <label for="username">Username:</label>
-    <input type="text" name="username" placeholder="Enter Username">
 
-    <label for="password">Password</label>
-    <input type="password" name="password">
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" name="username"  class="form-control" placeholder="Enter Username">
+    </div>
+
+    <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password">
+    </div>
 
     <input type="submit" class='btn btn-default'name="" value="Login">
     <h5>Don't have account? Click on register button</h5>
