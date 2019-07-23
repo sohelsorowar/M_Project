@@ -32,7 +32,7 @@ class Create_Meeting(models.Model):
     date = models.DateField(default=datetime.now)
 
     def __str__(self):
-        return self.meeting_name
+        return self.meeting_sub
 
     def get_absolute_url(self):
         return reverse("meeting_app:meeting_detail", kwargs={'pk': self.pk})
@@ -50,6 +50,22 @@ class Committee_Member(models.Model):
     def __str__(self):
         return self.first_name
 
+
+class Resulation(models.Model):
+    resulaton_sub = models.ForeignKey(Create_Meeting, default= 'meeting_sub', related_name='resulations')
+    agenda1=models.TextField(max_length=200)
+    decision1 = models.TextField(max_length=200)
+    agenda2 =models.TextField(max_length=200)
+    decision2 = models.TextField(max_length=200)
+    agenda3 =models.TextField(max_length=200)
+    decision3 = models.TextField(max_length=200)
+    agenda4 =models.TextField(max_length=200)
+    decision4 = models.TextField(max_length=200)
+    agenda5=models.TextField(max_length=200)
+    decision5 = models.TextField(max_length=200)
+
+    def __str__(self):
+        return self.agenda1
 
 
 # Create your models here.

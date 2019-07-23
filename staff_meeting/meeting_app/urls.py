@@ -11,7 +11,12 @@ urlpatterns=[
         url(r'^delete/(?P<pk>\d+)/$',views.Create_MeatingDeleteView.as_view(),name='delete'),
        url(r'^(?P<pk>\d+)/$',views.Create_MeetingDetailView.as_view(),name='meeting_detail'),
        url(r'^meeting_detail/$',views.meeting_detail,name='meeting_detail'),
+
        url(r'^member_list/$',views.Committee_MemberListView.as_view(),name='member_list'),
+
+       url(r'^resulaton_list/$',views.ResulationListView.as_view(),name='resulaton_list'),
+    
+
 
 
       # url(r'^$',views.Create_MeetingListView.as_view,name='list')

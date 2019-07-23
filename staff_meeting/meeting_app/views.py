@@ -9,20 +9,41 @@ from django.urls import reverse
 from . import models
 from django.core.mail import send_mail
 from django.conf import settings
+from .forms import Create_MeetingForm
+
+
+
 
 
 
 
 # Create your views here.
 def index(request):
+    return render(request,'meeting_app/index.html')
+
+def sendmail(request):
+
     if request.method=='POST':
         message = request.POST['message']
         subject = request.POST['subject']
         email_from = settings.EMAIL_HOST_USER
-        recipient_list = ['sohelsorowar@gmail.com',]
+        recipient_list = ['sohelsorowar@gmail.com','sohelsorowar@ru.ac.bd',13055417]
+        #print('request', request.POST)
+        #members = models.Committee_Member.objects.get(type=Committee_Member.email)
+        #recipient_list = ['members',]
+        #for member in members:
+        #    recipient_list.append(member.email)
+
+
         send_mail( subject, message, email_from, recipient_list,fail_silently=False)
         return HttpResponse("Mail send successfully")
-    return render(request,'meeting_app/index.html')
+
+
+
+
+
+
+
 
 def create_meeting(request):
     return render(request,'meeting_app/create_meeting.html')
@@ -132,6 +153,11 @@ class Committee_MemberListView(ListView):
     context_object_name = 'committee_members'
     model = models.Committee_Member
 
+# resulations
+
+class ResulationListView(ListView):
+        context_object_name = 'resulations'
+        model = models.Resulation
 
 #lass Create_MeetingListView(DetailView):
 #    context_object_name='meeting_detail'

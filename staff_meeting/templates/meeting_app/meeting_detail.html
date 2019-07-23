@@ -1,21 +1,38 @@
 {% extends 'meeting_app/base.html' %}
 {% block body_block %}
 
+
+
+
 <div class="mask rgba-gradient align-items-center" style=" background-color:#DCDCDC;">
 <div class="jumbtron">
   <div class="container">
-  <h1>Meeting Resulation/details page</h1>
+
+
+    <form class="" action="{% url 'sendmail' %}" method="post">
+      {% csrf_token %}
+    <h1>Meeting Resulation/details page</h1>
     <p>ID : {{meeting_detail.meeting_id}}</p>
     <p>Type : {{meeting_detail.meeting_name}}</p>
     <p>SubHeadiing : {{meeting_detail.meeting_sub}}</p>
     <p>Agenda : {{meeting_detail.meeting_text}}</p>
 
 
+
+
     <p><a class='btn btn-warning' href="{% url 'meeting_app:update' pk=meeting_detail.pk %}">Update</a></p>
-  
 
 
-      </div>
+      <br>Mail Sub:</br>
+      <input type="" name="subject" value="{{meeting_detail.meeting_sub}}" size="100">
+      <br>Mail Text:</br>
+      <input  type="" name="message" value="{{meeting_detail.meeting_text}}"  size="100" >
+
+      <input type="submit" class="btn btn-success" name="" value="send mail" >
+
+    </form>
+
+  </div>
 
 </div>
 </div>
